@@ -5,19 +5,20 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBack from '@material-ui/icons/ArrowBack'
 import Iframe from 'react-iframe'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const styles = theme => ({
 	buttonLocation: {
 		display: 'flex',
 		marginLeft: '60px',
-		marginTop: '20px'
+		marginTop: '20px',
 	},
 	dataLocation: {
 		width: '600px',
-		margin: 'auto'
+		margin: 'auto',
 	},
 	songHeader: {
-		display: 'flex'
+		display: 'flex',
 	},
 	titleLocation: {
 		margin: 'auto',
@@ -37,9 +38,11 @@ class Song extends React.Component {
 		return (
 			<Fragment>
 				<div className={classes.buttonLocation}>
-					<IconButton onClick={backToSearch}>
-						<ArrowBack/>
-					</IconButton>
+					<Tooltip title="Back">
+						<IconButton onClick={backToSearch}>
+							<ArrowBack/>
+						</IconButton>
+					</Tooltip>
 				</div>
 				<div className={classes.dataLocation}>
 					<div className={classes.songHeader}>
@@ -53,11 +56,11 @@ class Song extends React.Component {
 						<div className={classes.dataRow}>Time: {Moment(chosenSong.trackTimeMillis).format('HH:mm')}</div>
 						<div className={classes.dataRow}>Release Date: {Moment(chosenSong.releaseDate).format('YYYY-MM-DD')}</div>
 					</div>
-						<Iframe url={chosenSong.previewUrl}
-										width="450px"
-										height="250px"
-										display="initial"
-										position="relative"/>
+					<Iframe url={chosenSong.previewUrl}
+									width="450px"
+									height="250px"
+									display="initial"
+									position="relative"/>
 				</div>
 			</Fragment>
 

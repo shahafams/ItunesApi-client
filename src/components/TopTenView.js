@@ -7,8 +7,8 @@ const styles = theme => ({
 	listLocation: {
 		display: 'flex',
 		width: '250px',
-		margin: 'auto'
-	}
+		margin: 'auto',
+	},
 })
 
 const TopTenView = ({ classes, topTen, handleSearch }) => {
@@ -22,7 +22,7 @@ const TopTenView = ({ classes, topTen, handleSearch }) => {
 						<ListItem className={classes.listLocation} button onClick={() => clickTopTen(word.context)} key={index}>
 							<ListItemText primary={word.context}/>
 						</ListItem>
-					)
+					),
 				)
 			}
 		</div>

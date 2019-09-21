@@ -8,18 +8,18 @@ import Button from '@material-ui/core//Button'
 
 const styles = theme => ({
 	location: {
-		marginRight: ' 15px'
-	}
+		marginRight: ' 15px',
+	},
 })
 
 class SearchHeader extends React.Component {
 	state = {
-		songName: ''
+		songName: '',
 	}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.searchWord !== prevProps.searchWord) {
-			this.setState({songName: this.props.searchWord})
+			this.setState({ songName: this.props.searchWord })
 		}
 	}
 

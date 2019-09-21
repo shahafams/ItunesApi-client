@@ -11,11 +11,11 @@ const styles = theme => ({
 	card: {
 		width: '450px',
 		margin: '25px',
-		padding: '15px'
+		padding: '15px',
 	},
 })
 
-const MainView = ({ classes, searchResult, chooseSong }) => (
+const SongsView = ({ classes, searchResult, chooseSong }) => (
 	<div>
 		{
 			searchResult.map((result, index) => (
@@ -31,10 +31,10 @@ const MainView = ({ classes, searchResult, chooseSong }) => (
 							<div>time: {Moment(result.trackTimeMillis).format('HH:mm')}</div>
 						</CardContent>
 					</Card>
-				)
+				),
 			)
 		}
 	</div>
 )
 
-export default withStyles(styles)(MainView)
+export default withStyles(styles)(SongsView)
