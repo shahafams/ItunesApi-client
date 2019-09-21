@@ -38,6 +38,13 @@ class SearchHeader extends React.Component {
 		getTopSearches()
 	}
 
+	submitText = () => (e) => {
+		if (e.key === 'Enter') {
+			this.handleSearchClick()
+			e.preventDefault()
+		}
+	}
+
 	render() {
 		const { classes } = this.props
 		const { songName } = this.state
@@ -48,6 +55,7 @@ class SearchHeader extends React.Component {
 					label="name"
 					placeholder="song name"
 					className={classes.location}
+					onKeyPress={this.submitText()}
 					variant="outlined"
 					value={songName}
 					onChange={this.onChangeInput()}
