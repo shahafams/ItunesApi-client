@@ -14,7 +14,7 @@ const styles = theme => ({
 
 class SearchHeader extends React.Component {
 	state = {
-		songName: '',
+		songName: this.props.searchWord || '',
 	}
 
 	componentDidUpdate(prevProps) {

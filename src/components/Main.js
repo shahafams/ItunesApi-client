@@ -11,6 +11,7 @@ class Main extends React.Component {
 		searchResult: [],
 		showSearchResult: true,
 		searchWord: '',
+		loading: false,
 	}
 
 	getTopSearches = async () => {
@@ -21,9 +22,10 @@ class Main extends React.Component {
 		this.setState({ topTen: result.data, showSearchResult: false })
 	}
 
-	handleSearch = async (word) => {
+	handleSearch = async (word, fromTop) => {
 		const { searchWord } = this.state
-		if (word && word !== '' && word !== searchWord) {
+		if (word && word !== '' && (word !== searchWord || fromTop)) {
+			this.setState({loading: true})
 			const result = await Axios({
 				method: 'GET',
 				url: `http://itunes.apple.com/search?term=${word}&country=il&entity=musicVideo,song
@@ -40,6 +42,7 @@ class Main extends React.Component {
 				url: 'http://localhost:4000/',
 				data: { context: word },
 			})
+			this.setState({loading: false})
 		}
 	}
 
@@ -52,7 +55,7 @@ class Main extends React.Component {
 	}
 
 	render() {
-		const { chosenSong, showChosenSong, topTen, searchResult, showSearchResult, searchWord } = this.state
+		const { chosenSong, showChosenSong, topTen, searchResult, showSearchResult, searchWord, loading } = this.state
 		return (
 			<Fragment>
 				{
@@ -65,6 +68,7 @@ class Main extends React.Component {
 							searchResult={searchResult}
 							showSearchResult={showSearchResult}
 							searchWord={searchWord}
+							loading={loading}
 						/>
 					) : (
 						<Song

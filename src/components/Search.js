@@ -3,9 +3,18 @@ import SongsView from './SongsView'
 import SearchHeader from './SearchHeader'
 import TopTenView from './TopTenView'
 
-const Search = ({ chooseSong, getTopSearches, handleSearch, topTen, searchResult, showSearchResult, searchWord }) => {
+const Search = ({
+									chooseSong,
+									getTopSearches,
+									handleSearch,
+									topTen,
+									searchResult,
+									showSearchResult,
+									searchWord,
+									loading,
+								}) => {
 	return (
-		<div className="App">
+		<div>
 			<SearchHeader
 				getTopSearches={getTopSearches}
 				handleSearch={handleSearch}
@@ -13,7 +22,7 @@ const Search = ({ chooseSong, getTopSearches, handleSearch, topTen, searchResult
 			/>
 			{
 				showSearchResult ? (
-					<SongsView searchResult={searchResult} chooseSong={chooseSong}/>
+					<SongsView searchResult={searchResult} chooseSong={chooseSong} loading={loading}/>
 				) : (
 					<TopTenView topTen={topTen} handleSearch={handleSearch}/>
 				)

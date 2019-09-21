@@ -21,13 +21,18 @@ const styles = theme => ({
 		display: 'flex',
 	},
 	titleLocation: {
-		margin: 'auto',
+		margin: 'auto 0px auto 25px',
 	},
 	data: {
-		marginTop: '20px',
+		textAlign: 'left',
+		margin: '4px 0 10px 69px',
 	},
 	dataRow: {
 		padding: '5px',
+	},
+	songAvatar: {
+		width: '60px',
+		height: '60px',
 	},
 })
 
@@ -46,8 +51,8 @@ class Song extends React.Component {
 				</div>
 				<div className={classes.dataLocation}>
 					<div className={classes.songHeader}>
-						<Avatar src={chosenSong.artworkUrl60}/>
-						<div className={classes.titleLocation}>song name: {chosenSong.trackName}</div>
+						<Avatar className={classes.songAvatar} src={chosenSong.artworkUrl60}/>
+						<div className={classes.titleLocation}>{chosenSong.trackName}</div>
 					</div>
 					<div className={classes.data}>
 						<div className={classes.dataRow}>Genre Name: {chosenSong.primaryGenreName}</div>
@@ -60,6 +65,7 @@ class Song extends React.Component {
 									width="450px"
 									height="250px"
 									display="initial"
+									frameBorder={0}
 									position="relative"/>
 				</div>
 			</Fragment>

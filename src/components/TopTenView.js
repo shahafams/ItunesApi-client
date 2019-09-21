@@ -13,7 +13,7 @@ const styles = theme => ({
 
 const TopTenView = ({ classes, topTen, handleSearch }) => {
 	const clickTopTen = (word) => {
-		handleSearch(word)
+		handleSearch(word, true)
 	}
 	return (
 		<div>

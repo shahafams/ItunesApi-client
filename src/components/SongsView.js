@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
 import Moment from 'moment'
+import Grid from '@material-ui/core/Grid'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const styles = theme => ({
 	card: {
@@ -13,25 +15,38 @@ const styles = theme => ({
 		margin: '25px',
 		padding: '15px',
 	},
+	circleLocation: {
+		margin: '150px auto 0 auto',
+	},
 })
 
-const SongsView = ({ classes, searchResult, chooseSong }) => (
+const SongsView = ({ classes, searchResult, chooseSong, loading }) => (
 	<div>
 		{
-			searchResult.map((result, index) => (
-					<Card className={classes.card} key={`card-${index}`} onClick={() => chooseSong(result)}>
-						<CardHeader
-							avatar={
-								<Avatar src={result.artworkUrl60}/>
-							}
-							title={result.trackName}/>
-						<Divider/>
-						<CardContent>
-							<div>artist name: {result.artistName}</div>
-							<div>time: {Moment(result.trackTimeMillis).format('HH:mm')}</div>
-						</CardContent>
-					</Card>
-				),
+			loading ? (
+				<CircularProgress className={classes.circleLocation}/>
+			) : (
+				<Grid container spacing={0}>
+					{
+						searchResult.map((result, index) => (
+								<Grid key={index}>
+									<Card className={classes.card} key={`card-${index}`} onClick={() => chooseSong(result)}>
+										<CardHeader
+											avatar={
+												<Avatar src={result.artworkUrl60}/>
+											}
+											title={result.trackName}/>
+										<Divider/>
+										<CardContent>
+											<div>artist name: {result.artistName}</div>
+											<div>time: {Moment(result.trackTimeMillis).format('HH:mm')}</div>
+										</CardContent>
+									</Card>
+								</Grid>
+							),
+						)
+					}
+				</Grid>
 			)
 		}
 	</div>
